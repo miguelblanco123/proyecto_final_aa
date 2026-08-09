@@ -1,0 +1,12 @@
+{
+  "dbscan": {
+    "eps": 0.8828294213829456,
+    "min_samples": 29
+  },
+  "isolation_forest": {
+    "n_estimators": 236,
+    "max_samples": 0.5739328498550292,
+    "contamination": 0.013321553045214003,
+    "max_features": 0.984047375706068
+  }
+}
