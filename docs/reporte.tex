@@ -15,6 +15,7 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{fancyhdr}
+\usepackage{float}
 
 \graphicspath{{images/}}
 
@@ -214,14 +215,14 @@ Precio\_Max, Productos Distintos) presentan histogramas fuertemente sesgados a l
 una transformación logarítmica (\texttt{log1p}) antes de examinar su correlación, con el fin de que la matriz de
 dispersión y los coeficientes de Pearson no estuvieran dominados por unos cuantos valores extremos.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{fig01_correlacion_original.png}
     \caption{Matriz de dispersión y correlación de Pearson de las variables numéricas originales (sin transformar).}
     \label{fig:corr-original}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{fig02_correlacion_log1p.png}
     \caption{Matriz de dispersión y correlación de Pearson tras la transformación log1p. Las distribuciones de la diagonal se aproximan más a la normal.}
@@ -239,7 +240,7 @@ Los patrones de correlación más relevantes, ya con la transformación aplicada
 
 \subsubsection*{Variables categóricas}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{fig03_categoricas.png}
     \caption{Distribución de Pais Principal y Paises Distintos.}
@@ -254,7 +255,7 @@ directo sobre 41 categorías.
 
 \subsubsection*{Detección visual de valores atípicos}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{fig04_boxplots.png}
     \caption{Diagramas de caja (boxplots) de las variables numéricas continuas.}
@@ -396,7 +397,7 @@ Las combinaciones que producían un único cluster (o ningún cluster real, solo
 devolviendo un score de $-1$, ya que el Silhouette Score no está definido cuando existe menos de dos
 clusters.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{lll}
 \toprule
@@ -418,14 +419,14 @@ Con los hiperparámetros óptimos, DBSCAN produjo 2 clusters reales más el grup
 proyectó el dataset a 2 componentes principales mediante PCA, que retienen conjuntamente el 62.1\% de
 la varianza total.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{fig05_dispersion_cluster_dbscan.png}
     \caption{Matriz de dispersión de variables seleccionadas (Permanencia, Compras, Ticket\_Prom, Precio\_Prom, Pct\_Devoluciones), coloreada según la etiqueta binaria de anomalía asignada por DBSCAN (Normal vs.\ Anomalía/Ruido), con la correlación de Pearson de cada grupo anotada en el triángulo superior.}
     \label{fig:dispersion-dbscan}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{fig06_densidad_dbscan_pca.png}
     \caption{Densidad de los clusters de DBSCAN sobre la proyección PCA (2 componentes).}
@@ -477,7 +478,7 @@ siguientes hiperparámetros:
     \item \textbf{max\_features:} fracción de variables consideradas en cada partición.
 \end{itemize}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{ll}
 \toprule
@@ -500,7 +501,7 @@ Con los hiperparámetros óptimos, Isolation Forest marcó 79 clientes (1.34\% d
 porcentaje mucho más acotado que el 39.06\% de DBSCAN, y más cercano a lo que intuitivamente se
 esperaría de un conjunto de ``casos atípicos'' dentro de una base de clientes.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{fig07_densidad_isof_pca.png}
     \caption{Densidad de los puntos normales y anomalías de Isolation Forest.}
@@ -528,7 +529,7 @@ evaluación de ambos modelos se apoyó en tres tipos de evidencia complementaria
 
 Los resultados obtenidos fueron los siguientes:
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{ll}
 \toprule
@@ -539,14 +540,14 @@ Porcentaje & 39.0571817562968 \% \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{fig08_boxplots_anomalia_dbscan.png}
     \caption{Distribución de cada variable, comparando clientes normales contra los marcados como anomalía (ruido) por DBSCAN.}
     \label{fig:boxplots-dbscan}
 \end{figure}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{lccccc}
 \toprule
@@ -568,14 +569,14 @@ Anomalía (1) & 0.21 & 0.31 & 0.14 & 0.34 & 0.30 \\
 
 \subsection*{Evaluación de Isolation Forest}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{fig09_boxplots_anomalia_isof.png}
     \caption{Distribución de cada variable, comparando clientes normales contra los marcados como anomalía por Isolation Forest.}
     \label{fig:boxplots-isof}
 \end{figure}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{lccccc}
 \toprule
@@ -597,14 +598,14 @@ Anomalía (1) & 0.54 & 0.91 & 3.46 & 2.52 & 0.54 \\
 
 \subsection*{Comparación entre modelos}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{fig10_comparacion_modelos.png}
     \caption{Comparación de Silhouette Score y porcentaje de anomalías detectadas entre ambos modelos.}
     \label{fig:comparacion}
 \end{figure}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{lccc}
 \toprule
@@ -618,7 +619,7 @@ Isolation Forest & 0.58 & 79 & 1.34\% \\
 
 \subsubsection*{Tabla cruzada: coincidencia entre modelos}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{lcc}
 \toprule

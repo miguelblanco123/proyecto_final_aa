@@ -102,8 +102,4 @@ sty.divider()
 
 sec.section_8_cierre()
 
-sty.paragraph("""
-    <p>¿Quieres ver cómo se llegó a cada uno de estos hallazgos, paso a paso, o entrenar tu
-    propia versión del modelo? Elige a dónde ir.</p>
-    """)
 sty.nav("historia", key_suffix="bottom")
