@@ -88,3 +88,14 @@ python -m src.preprocessing
 python -m src.train
 python -m src.evaluate
 ```
+
+## App de Streamlit
+
+`app.py` es una UI de solo lectura que resume todo el proyecto (datos, EDA, preprocesamiento,
+estado de entrenamiento y evaluación de ambos modelos) a partir de los artefactos que genera el
+pipeline — no reentrena nada en vivo. Primero corre el pipeline (`python -m src.data`, `src.preprocessing`,
+`src.train`) para generar `data/processed/` y `models/`, y luego:
+
+```bash
+streamlit run app.py
+```

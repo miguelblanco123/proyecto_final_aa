@@ -81,6 +81,8 @@ def save_artifacts(
     best_params_dbscan,
     best_params_isof,
     df_predictions,
+    study_dbsc=None,
+    study_isof=None,
     models_dir="models",
     predictions_path="data/processed/model_predictions.csv",
 ):
@@ -92,6 +94,13 @@ def save_artifacts(
         json.dump({"dbscan": best_params_dbscan, "isolation_forest": best_params_isof}, f, indent=2)
 
     df_predictions.to_csv(predictions_path, encoding="utf-8")
+
+    # Historial de trials de Optuna, para poder mostrar el progreso de la
+    # optimizacion (estado de entrenamiento) sin tener que reentrenar
+    if study_dbsc is not None:
+        study_dbsc.trials_dataframe().to_csv(f"{models_dir}/dbscan_trials.csv", index=False)
+    if study_isof is not None:
+        study_isof.trials_dataframe().to_csv(f"{models_dir}/isof_trials.csv", index=False)
 
 
 def main(
@@ -119,6 +128,8 @@ def main(
         study_dbsc.best_params,
         study_isof.best_params,
         df_predictions,
+        study_dbsc=study_dbsc,
+        study_isof=study_isof,
         models_dir=models_dir,
         predictions_path=predictions_path,
     )
