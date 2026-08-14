@@ -1,6 +1,6 @@
 # Detección de Clientes Anómalos en E-commerce
 
-Proyecto final — Maestría en Ciencia de Datos, Aprendizaje Automático
+Proyecto final, Maestría en Ciencia de Datos, Aprendizaje Automático
 Universidad Autónoma de Nuevo León
 
 Profesor: Irving Daniel Estrada López
@@ -14,8 +14,8 @@ Alumnos:
 
 Construir un perfil de compra a nivel cliente a partir de las transacciones de una tienda de e-commerce (dataset [Online Retail / Online Retail II](https://archive.ics.uci.edu/dataset/352/online+retail)) y usarlo para **detectar clientes con comportamiento anómalo**, comparando dos enfoques no supervisados:
 
-* **DBSCAN** — clustering basado en densidad; los puntos que no logran asignarse a ningún cluster (`label == -1`) se interpretan como anomalías.
-* **Isolation Forest** — modelo de ensamble diseñado específicamente para detección de anomalías.
+* **DBSCAN**  clustering basado en densidad; los puntos que no logran asignarse a ningún cluster (`label == -1`) se interpretan como anomalías.
+* **Isolation Forest**  modelo de ensamble diseñado específicamente para detección de anomalías.
 
 Ambos modelos se optimizan con [Optuna](https://optuna.org/) maximizando el *silhouette score*, y se comparan en base a ese score, el porcentaje de clientes marcados como anómalos, y qué tan interpretable/accionable es el perfil resultante.
 
@@ -47,7 +47,7 @@ Cada notebook numerado (`00`-`04`) lee y escribe sobre `data/processed/` y `mode
 | Etapa | Notebook | Módulo | Entrada | Salida |
 |---|---|---|---|---|
 | Carga | `00_load_data.ipynb` | `src/data.py` | `data/raw/*.xlsx` | `data/processed/customer_features.csv` |
-| EDA | `01_eda.ipynb` | — | `data/processed/customer_features.csv` | (solo análisis) |
+| EDA | `01_eda.ipynb` |  | `data/processed/customer_features.csv` | (solo análisis) |
 | Preprocesamiento | `02_preprocessing.ipynb` | `src/preprocessing.py` | `data/processed/customer_features.csv` | `data/processed/customer_features_model.csv` |
 | Entrenamiento | `03_entrenamiento.ipynb` | `src/train.py` | `data/processed/customer_features_model.csv` | `models/isolation_forest.joblib`, `models/best_params.json`, `data/processed/model_predictions.csv` |
 | Validación | `04_validacion.ipynb` | `src/evaluate.py` | `data/processed/customer_features_model.csv`, `data/processed/model_predictions.csv` | (solo evaluación) |
@@ -93,7 +93,7 @@ python -m src.evaluate
 
 `app.py` es una UI de solo lectura que resume todo el proyecto (datos, EDA, preprocesamiento,
 estado de entrenamiento y evaluación de ambos modelos) a partir de los artefactos que genera el
-pipeline — no reentrena nada en vivo. Primero corre el pipeline (`python -m src.data`, `src.preprocessing`,
+pipeline, no reentrena nada en vivo. Primero corre el pipeline (`python -m src.data`, `src.preprocessing`,
 `src.train`) para generar `data/processed/` y `models/`, y luego:
 
 ```bash
